@@ -23,4 +23,6 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
 "" For CtrlP
+"" Because conflict with yank-ring
 let g:ctrlp_map = '<leader>t'
+
