@@ -25,4 +25,4 @@ set smartcase                   " ... unless they contain at least one capital l
 "" For CtrlP
 "" Because conflict with yank-ring
 let g:ctrlp_map = '<leader>t'
-
+set tags+=.git/gems.tags
