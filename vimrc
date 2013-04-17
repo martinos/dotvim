@@ -1,5 +1,6 @@
 filetype off 
 call pathogen#infect()
+Helptags
 
 syntax on
 filetype plugin indent on
@@ -22,7 +23,3 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-"" For CtrlP
-"" Because conflict with yank-ring
-let g:ctrlp_map = '<leader>t'
-set tags+=.git/gems.tags
