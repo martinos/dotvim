@@ -23,3 +23,14 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
+"" To better distinguish cursor and parenthesis matcher
+hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
+
+let mapleader=','
+map <Esc><Esc> :w<CR>
+
+map <Leader>t :w<CR> :!ruby %<CR>
+map <C-s> <esc>:w<CR>
+map <Leader>c :%w !xclip 
+imap <C-s> <esc>:w<CR>
+
