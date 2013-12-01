@@ -27,10 +27,21 @@ set smartcase                   " ... unless they contain at least one capital l
 hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
 
 let mapleader=','
+
 map <Esc><Esc> :w<CR>
 
-map <Leader>t :w<CR> :!ruby %<CR>
-map <C-s> <esc>:w<CR>
-map <Leader>c :%w !xclip 
+map <Leader>t :w<CR> :!ruby -I test:lib:spec %<CR>
+
+"" Copy and paste to the system clipboard see help w_c
+map <Leader>c :w !pbcopy<CR>
+map <Leader>v :r! pbpaste<CR>
+
+"" Exit insert mode and save buffer
 imap <C-s> <esc>:w<CR>
+map <C-s> <esc>:w<CR>
+
+"" add to Ruby method some parenthesis
+map <Leader>m wv$hs)hx
+
+set pastetoggle=<F3>
 
