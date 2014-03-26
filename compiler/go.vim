@@ -1,0 +1,1 @@
+/Users/martinchabot/.vim/bundle/vim-golang/misc/vim/compiler/go.vim

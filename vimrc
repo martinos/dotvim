@@ -2,8 +2,12 @@ filetype off
 call pathogen#infect()
 Helptags
 
+set tags+=.git/gems.tags
+
 syntax on
 filetype plugin indent on
+
+set number
 set nocompatible
 set smarttab
 set autoindent
@@ -22,15 +26,30 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
+"" Colorscheme
+syntax enable
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized
 
 "" To better distinguish cursor and parenthesis matcher
-hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
+hi MatchParen cterm=bold ctermbg=none ctermfg=red
+"" hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
 
 let mapleader=','
 
 map <Esc><Esc> :w<CR>
 
-map <Leader>t :w<CR> :!ruby -I test:lib:spec %<CR>
+set makeprg=ruby\ -I\ lib:test\ %
+map <Leader>t :w<CR> :make! %<CR>
+map <Leader>s :w<CR> :!ruby -c  %<CR>
+map <Leader>e :botright copen<CR>
+map <Leader>a ggVG
+" map <Leader>t :w<CR> :!ruby -I test:lib:spec %<CR>
+" map <Leader>t :w<CR> :!bundle exec rspec %<CR>
 
 "" Copy and paste to the system clipboard see help w_c
 map <Leader>c :w !pbcopy<CR>
@@ -43,5 +62,26 @@ map <C-s> <esc>:w<CR>
 "" add to Ruby method some parenthesis
 map <Leader>m wv$hs)hx
 
+function IndentV()
+  Tabularize /^[^:]*\zs:/r1c0l0
+  Tabularize /^[^=>]*\zs=>/l1
+endfunction
+map <Leader>iv :call IndentV()<cr>
+
+
+"" Disable Ex mode
+map Q <Nop>
 set pastetoggle=<F3>
+
+" Do we have local vimrc?
+if filereadable('.vimrc.local')
+  " If so, go ahead and load it.
+  source .vimrc.local
+endif
+
+autocmd FileType go compiler go
+autocmd FileType go map <Leader>t :w<CR>:make! %<CR>
+autocmd FileType go map <Leader>r :!go run %<CR>
+
+highlight Search ctermbg=black ctermfg=yellow cterm=underline
 
