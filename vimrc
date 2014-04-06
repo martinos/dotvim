@@ -26,14 +26,14 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-"" Colorscheme
+" Colorscheme
 syntax enable
 if has('gui_running')
-    set background=light
+   set background=light
 else
-    set background=dark
+   set background=light
 endif
-colorscheme solarized
+" colorscheme solarized
 
 "" To better distinguish cursor and parenthesis matcher
 hi MatchParen cterm=bold ctermbg=none ctermfg=red
@@ -43,11 +43,12 @@ let mapleader=','
 
 map <Esc><Esc> :w<CR>
 
-set makeprg=ruby\ -I\ lib:test\ %
-map <Leader>t :w<CR> :make! %<CR>
-map <Leader>s :w<CR> :!ruby -c  %<CR>
+set makeprg=ruby\ -I\ lib:test:spec\ %
+map <Leader>t :w<CR>:silent !clear<CR> :make! %<CR>
+map <Leader>s :w<CR>:silent !clear<CR> :!ruby -c  %<CR>
 map <Leader>e :botright copen<CR>
 map <Leader>a ggVG
+map <Leader>o :silent !clear<CR> :!rbshow %<CR>
 " map <Leader>t :w<CR> :!ruby -I test:lib:spec %<CR>
 " map <Leader>t :w<CR> :!bundle exec rspec %<CR>
 
