@@ -76,7 +76,6 @@ map <Leader>iv :call IndentV()<cr>
 
 
 "" Disable Ex mode
-map <Leader>a :!bundle exec rake && git add .<CR> 
 map Q <Nop>
 set pastetoggle=<F3>
 
