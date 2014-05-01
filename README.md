@@ -215,3 +215,11 @@ Ctrl-w r
 	
 To reload vimrc
 :so %
+
+### Sparkup plugin
+
+https://www.youtube.com/watch?v=dB2Q9EN37eY
+
+### easymotion
+
+https://github.com/Lokaltog/vim-easymotion

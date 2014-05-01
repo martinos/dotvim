@@ -31,13 +31,14 @@ syntax enable
 if has('gui_running')
    set background=light
 else
-   set background=light
+   set background=dark
 endif
 " colorscheme solarized
 
 "" To better distinguish cursor and parenthesis matcher
-hi MatchParen cterm=bold ctermbg=none ctermfg=red
-"" hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
+
+" hi MatchParen cterm=bold ctermbg=none ctermfg=red
+hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
 
 let mapleader=','
 
@@ -48,7 +49,11 @@ map <Leader>t :w<CR>:silent !clear<CR> :make! %<CR>
 map <Leader>s :w<CR>:silent !clear<CR> :!ruby -c  %<CR>
 map <Leader>e :botright copen<CR>
 map <Leader>a ggVG
+map <Leader>w :!bundle exec rake && git add .<CR>:! git status<CR>
+
+" Display structures
 map <Leader>o :silent !clear<CR> :!rbshow %<CR>
+map <Leader>n :silent !clear<CR> :!rbtestshow %<CR>
 " map <Leader>t :w<CR> :!ruby -I test:lib:spec %<CR>
 " map <Leader>t :w<CR> :!bundle exec rspec %<CR>
 
@@ -71,6 +76,7 @@ map <Leader>iv :call IndentV()<cr>
 
 
 "" Disable Ex mode
+map <Leader>a :!bundle exec rake && git add .<CR> 
 map Q <Nop>
 set pastetoggle=<F3>
 
