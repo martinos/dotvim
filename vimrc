@@ -50,6 +50,7 @@ map <Leader>s :w<CR>:silent !clear<CR> :!ruby -c  %<CR>
 map <Leader>e :botright copen<CR>
 map <Leader>a ggVG
 map <Leader>w :!bundle exec rake && git add .<CR>:! git status<CR>
+map <Leader>2 :!git commit -v<CR>
 
 " Display structures
 map <Leader>o :silent !clear<CR> :!rbshow %<CR>
