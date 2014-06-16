@@ -33,12 +33,12 @@ if has('gui_running')
 else
    set background=dark
 endif
-" colorscheme solarized
+colorscheme solarized
 
 "" To better distinguish cursor and parenthesis matcher
 
 " hi MatchParen cterm=bold ctermbg=none ctermfg=red
-hi MatchParen ctermfg=black ctermbg=white guifg=black guifg=white 
+hi MatchParen ctermfg=black ctermbg=red guifg=black guifg=white 
 
 let mapleader=','
 
@@ -49,7 +49,7 @@ map <Leader>t :w<CR>:silent !clear<CR> :make! %<CR>
 map <Leader>s :w<CR>:silent !clear<CR> :!ruby -c  %<CR>
 map <Leader>e :botright copen<CR>
 map <Leader>a ggVG
-map <Leader>w :!bundle exec rake && git add .<CR>:! git status<CR>
+map <Leader>w :!bundle exec rake RAILS_ENV=test && git add -A .<CR>:! git status<CR>
 map <Leader>2 :!git commit -v<CR>
 
 " Display structures
@@ -90,5 +90,29 @@ autocmd FileType go compiler go
 autocmd FileType go map <Leader>t :w<CR>:make! %<CR>
 autocmd FileType go map <Leader>r :!go run %<CR>
 
+nmap <buffer> <Leader>z <Plug>(seeing-is-believing-run)
+xmap <buffer> <Leader>z <Plug>(seeing-is-believing-run)
+imap <buffer> <Leader>z <Plug>(seeing-is-believing-run)
+
+nmap <buffer> <Leader>x <Plug>(seeing-is-believing-mark)
+xmap <buffer> <Leader>x <Plug>(seeing-is-believing-mark)
+imap <buffer> <Leader>x <Plug>(seeing-is-believing-mark)
 highlight Search ctermbg=black ctermfg=yellow cterm=underline
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guibg=magenta
+  elseif a:mode == 'r'
+    hi statusline guibg=blue
+  else
+    hi statusline guibg=red
+  endif
+endfunction
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=green
+
+" default the statusline to green when entering Vim
+hi statusline guibg=green
 
