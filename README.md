@@ -223,3 +223,17 @@ https://www.youtube.com/watch?v=dB2Q9EN37eY
 ### easymotion
 
 https://github.com/Lokaltog/vim-easymotion
+
+### dbext
+
+    <leader> sbp => Prompt for profile
+    <leader> se  => Execute under cursor
+    <leader> slt => List all tables
+    <leader> sdt => Describe table column
+    <leader> slc => Create an alias for the table under cursor.
+                    List the columns with the alias in the yank buffer.
+
+    R in the result buffer: Refreshes the buffer
+
+
+
