@@ -46,6 +46,7 @@ map <Esc><Esc> :w<CR>
 
 set makeprg=ruby\ -I\ lib:test:spec\ %
 map <Leader>t :w<CR>:silent !clear<CR> :make! %<CR>
+
 map <Leader>s :w<CR>:silent !clear<CR> :!ruby -c  %<CR>
 map <Leader>e :botright copen<CR>
 map <Leader>a ggVG
